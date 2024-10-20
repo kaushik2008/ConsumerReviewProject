@@ -156,7 +156,7 @@ public class Review {
   }
 
 
-// New method to analyze multiple reviews from a file
+
 public static void analyzeMovieReviews(String fileName) {
   try {
       Scanner input = new Scanner(new File(fileName));
@@ -165,7 +165,7 @@ public static void analyzeMovieReviews(String fileName) {
 
       while (input.hasNextLine()) {
           String movieReview = input.nextLine();
-          String movieName = extractMovieName(movieReview); // Method to extract movie name
+          String movieName = extractMovieName(movieReview); 
           double sentimentScore = calculateReviewSentiment(movieReview);
 
           if (sentimentScore > highestSentiment) {
@@ -181,20 +181,20 @@ public static void analyzeMovieReviews(String fileName) {
   }
 }
 
-// Method to extract the movie name from the review
+
 public static String extractMovieName(String review) {
-  // Assuming movie name is the first part of the review line
+  
   return review.split(":")[0].trim();
 }
 
-// Method to calculate sentiment score of a review
+
 public static double calculateReviewSentiment(String review) {
   String[] words = review.split(" ");
   double totalSentiment = 0;
 
   for (String word : words) {
       String cleanedWord = removePunctuation(word).toLowerCase();
-      totalSentiment += sentimentVal(cleanedWord); // Use sentiment value for each word
+      totalSentiment += sentimentVal(cleanedWord); 
   }
 
   return totalSentiment;
