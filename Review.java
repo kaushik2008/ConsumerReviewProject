@@ -161,7 +161,7 @@ public static void analyzeMovieReviews(String fileName) {
   try {
       Scanner input = new Scanner(new File(fileName));
       String mostLikedMovie = "";
-      double highestSentiment = Double.NEGATIVE_INFINITY;
+      double highestSentiment = 0.0;
 
       while (input.hasNextLine()) {
           String movieReview = input.nextLine();
