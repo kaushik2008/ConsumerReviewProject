@@ -157,6 +157,7 @@ public class Review {
 
 
 
+
 public static void analyzeMovieReviews(String fileName) {
   try {
       Scanner input = new Scanner(new File(fileName));
@@ -174,18 +175,36 @@ public static void analyzeMovieReviews(String fileName) {
           }
       }
 
+  
+    if (highestSentiment >= 15) {
+      gradeValue = "A";      
+    }
+    if (highestSentiment <= 10) {
+      gradeValue = "B";      
+    }
+    if (highestSentiment <= 8) {
+      gradeValue = "C";      
+    }
+    if (highestSentiment <= 5) {
+      gradeValue = "D";      
+    }
+    if (highestSentiment <= 3) {
+      gradeValue = "E";      
+    }
+
       input.close();
-      System.out.println("The most liked movie is: " + mostLikedMovie + " with a sentiment score of " + highestSentiment);
+     
+    
+      System.out.println("The most liked movie is: " + mostLikedMovie + " with a sentiment score of " + gradeValue);
   } catch (Exception e) {
       System.out.println("Error reading reviews: " + e.getMessage());
   }
 }
 
-
 public static String extractMovieName(String review) {
-  
   return review.split(":")[0].trim();
 }
+
 
 
 public static double calculateReviewSentiment(String review) {
@@ -195,7 +214,6 @@ public static double calculateReviewSentiment(String review) {
   for (String word : words) {
       String cleanedWord = removePunctuation(word).toLowerCase();
       totalSentiment += sentimentVal(cleanedWord); 
-  }
 
   return totalSentiment;
 }
