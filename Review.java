@@ -155,7 +155,9 @@ public class Review {
     }
   }
 
-
+  /**
+   * This code analyzes movie reviews from a file, determines the movie with the highest sentiment score, assigns a grade based on the score, and prints the most liked movie along with its corresponding grade.
+   */
 
 
 public static void analyzeMovieReviews(String fileName) {
@@ -174,6 +176,22 @@ public static void analyzeMovieReviews(String fileName) {
               mostLikedMovie = movieName;
           }
       }
+
+    /**
+    while (input.hasNextLine()) {
+    String movieReview = input.nextLine();
+    String movieName = extractMovieName(movieReview); 
+    double sentimentScore = calculateReviewSentiment(movieReview);
+
+    switch ((sentimentScore > highestSentiment) ? 1 : 0) {
+        case 1:
+            highestSentiment = sentimentScore;
+            mostLikedMovie = movieName;
+            break;
+        case 0:
+            // no change if the sentiment is not greater
+            break;
+    */
 
   
     if (highestSentiment >= 15) {
@@ -200,12 +218,16 @@ public static void analyzeMovieReviews(String fileName) {
       System.out.println("Error reading reviews: " + e.getMessage());
   }
 }
-
+  /**
+his method extracts and returns the movie name by splitting the review string at the colon
+  */
 public static String extractMovieName(String review) {
   return review.split(":")[0].trim();
 }
 
-
+ /**
+This method calculates and returns the total sentiment score of a review by splitting the review into words, 
+  */
 
 public static double calculateReviewSentiment(String review) {
   String[] words = review.split(" ");
@@ -214,6 +236,14 @@ public static double calculateReviewSentiment(String review) {
   for (String word : words) {
       String cleanedWord = removePunctuation(word).toLowerCase();
       totalSentiment += sentimentVal(cleanedWord); 
+
+  /**
+    int i = 0;
+while (i < words.length) {
+    String cleanedWord = removePunctuation(words[i]).toLowerCase();
+    totalSentiment += sentimentVal(cleanedWord);
+    i++;
+*/
 
   return totalSentiment;
 }
