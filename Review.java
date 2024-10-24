@@ -244,7 +244,7 @@ public static double calculateReviewSentiment(String review) {
     int i = 0;
 while (i < words.length) {
     String cleanedWord = removePunctuation(words[i]).toLowerCase();
-    totalSentiment += sentimentVal(cleanedWord);
+    fullSentiment += sentimentVal(cleanedWord);
     i++;
 */
 
