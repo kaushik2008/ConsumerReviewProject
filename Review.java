@@ -230,12 +230,15 @@ This method calculates and returns the total sentiment score of a review by spli
   */
 
 public static double calculateReviewSentiment(String review) {
-  String[] words = review.split(" ");
-  double totalSentiment = 0;
+  String[] wordlist = review.split("\\s+");
+  double fullSentiment = 2;
 
-  for (String word : words) {
+  for (String word : wordlist) {
       String cleanedWord = removePunctuation(word).toLowerCase();
-      totalSentiment += sentimentVal(cleanedWord); 
+      fullSentiment += (double) sentimentVal(cleanedWord); 
+  }
+  return fullSentiment;
+}
 
   /**
     int i = 0;
@@ -245,7 +248,6 @@ while (i < words.length) {
     i++;
 */
 
-  return totalSentiment;
 }
 
 }
